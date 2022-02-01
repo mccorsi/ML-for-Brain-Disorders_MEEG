@@ -4,30 +4,54 @@ from mne.datasets import eegbci
 from mne.io import concatenate_raws, read_raw_edf
 from mne.viz import plot_raw
 import matplotlib.pyplot as plt
-
+import numpy as np
+from moabb.paradigms import LeftRightImagery
 
 from warnings import simplefilter
 #ignore all future warnings
 simplefilter(action='ignore', category=FutureWarning)
 
-if os.path.basename(os.getcwd()) != "ML_Brain-disorders_MEEG":
-    os.chdir("ML_Brain-disorders_MEEG")
+if os.path.basename(os.getcwd()) != "ML-for-Brain-Disorders_MEEG":
+    os.chdir("ML-for-Brain-Disorders_MEEG")
 db_basedir = os.getcwd() + "/MNE_samples/"
 
 # TODO: easier to use a single dataset as "fil rouge" + ref to the paper & packages
 
 #%% TODO: AQUI - Weibo 2014 : 7 (lh, rh, hands, feet, left_hand_right_foot, right_hand_left_foot, rest)
-from moabb.datasets import Weibo2014
+from moabb.datasets import Weibo2014, Cho2017
 
-dataset=Weibo2014()
+dataset=Cho2017() #Weibo2014()
+
 data = dataset.get_data(subjects=[1])
 subject, session, run = 1, "session_0", "run_0"
 raw = data[subject][session][run]
 
+fmin=8
+fmax=40
+paradigm = LeftRightImagery(fmin=fmin, fmax=fmax)
+X, labels, meta = paradigm.get_data(dataset=dataset, subjects=[1], return_epochs=True)
+
+#%%
 _ = raw.plot_sensors(show_names=True)
 
-ch_eeg=['Fp1', 'Fpz', 'Fp2', 'AF3', 'AF4', 'F7', 'F5', 'F3', 'F1', 'Fz', 'F2', 'F4', 'F6', 'F8', 'FT7', 'FC5', 'FC3', 'FC1', 'FCz', 'FC2', 'FC4', 'FC6', 'FT8', 'T7', 'C5', 'C3', 'C1', 'Cz', 'C2', 'C4', 'C6', 'T8', 'TP7', 'CP5', 'CP3', 'CP1', 'CPz', 'CP2', 'CP4', 'CP6', 'TP8', 'P7', 'P5', 'P3', 'P1', 'Pz', 'P2', 'P4', 'P6', 'P8', 'PO7', 'PO5', 'PO3', 'POz', 'PO4', 'PO6', 'PO8', 'CB1', 'O1', 'Oz', 'O2']
-raw.info['bads']=['CB2','VEO','HEO']
+# Weibo: #['Fp1', 'Fpz', 'Fp2', 'AF3', 'AF4', 'F7', 'F5', 'F3', 'F1', 'Fz', 'F2', 'F4', 'F6', 'F8', 'FT7', 'FC5', 'FC3', 'FC1', 'FCz', 'FC2', 'FC4', 'FC6', 'FT8', 'T7', 'C5', 'C3', 'C1', 'Cz', 'C2', 'C4', 'C6', 'T8', 'TP7', 'CP5', 'CP3', 'CP1', 'CPz', 'CP2', 'CP4', 'CP6', 'TP8', 'P7', 'P5', 'P3', 'P1', 'Pz', 'P2', 'P4', 'P6', 'P8', 'PO7', 'PO5', 'PO3', 'POz', 'PO4', 'PO6', 'PO8', 'CB1', 'O1', 'Oz', 'O2']
+# raw.info['bads']=['CB2','VEO','HEO']
+# Cho: ['Fp1', 'AF7', 'AF3', 'F1', 'F3', 'F5', 'F7', 'FT7', 'FC5', 'FC3',
+#        'FC1', 'C1', 'C3', 'C5', 'T7', 'TP7', 'CP5', 'CP3', 'CP1', 'P1',
+#        'P3', 'P5', 'P7', 'P9', 'PO7', 'PO3', 'O1', 'Iz', 'Oz', 'POz',
+#        'Pz', 'CPz', 'Fpz', 'Fp2', 'AF8', 'AF4', 'AFz', 'Fz', 'F2', 'F4',
+#        'F6', 'F8', 'FT8', 'FC6', 'FC4', 'FC2', 'FCz', 'Cz', 'C2', 'C4',
+#        'C6', 'T8', 'TP8', 'CP6', 'CP4', 'CP2', 'P2', 'P4', 'P6', 'P8',
+#        'P10', 'PO8', 'PO4', 'O2', 'EMG1', 'EMG2', 'EMG3', 'EMG4', 'Stim']
+
+ch_eeg=['Fp1', 'AF7', 'AF3', 'F1', 'F3', 'F5', 'F7', 'FT7', 'FC5', 'FC3',
+       'FC1', 'C1', 'C3', 'C5', 'T7', 'TP7', 'CP5', 'CP3', 'CP1', 'P1',
+       'P3', 'P5', 'P7', 'P9', 'PO7', 'PO3', 'O1', 'Iz', 'Oz', 'POz',
+       'Pz', 'CPz', 'Fpz', 'Fp2', 'AF8', 'AF4', 'AFz', 'Fz', 'F2', 'F4',
+       'F6', 'F8', 'FT8', 'FC6', 'FC4', 'FC2', 'FCz', 'Cz', 'C2', 'C4',
+       'C6', 'T8', 'TP8', 'CP6', 'CP4', 'CP2', 'P2', 'P4', 'P6', 'P8',
+       'P10', 'PO8', 'PO4', 'O2']
+raw.info['bads']=['EMG1', 'EMG2', 'EMG3', 'EMG4', 'Stim']
 raw.plot_psd(fmax=50, picks=ch_eeg, average=True)
 
 _ = raw.plot(duration=4, n_channels=30, color={'eeg':'darkblue'})
