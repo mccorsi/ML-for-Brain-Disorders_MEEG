@@ -41,6 +41,9 @@ _ = raw.plot(duration=10, start=10,  n_channels=30, color={'eeg':'darkblue'},
 _ = raw.plot_psd(picks=['eeg'], fmax=55) #fmin=4., fmax=35,
 
 #%%
+_ = raw.plot(duration=10, start=10,  n_channels=30, color={'eeg':'darkblue'},
+             scalings=dict(eeg=90e-6), remove_dc=True, highpass=5, lowpass=15)
+#%%
 fmin, fmax= 1, 45
 events = ["left_hand", "right_hand", "feet", "rest"]
 paradigm = MotorImagery(events=events, n_classes=len(events), fmin=fmin, fmax=fmax)
