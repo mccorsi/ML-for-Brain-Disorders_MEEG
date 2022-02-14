@@ -21,7 +21,7 @@ In this chapter, we present the main characteristics of the magnetoencephalograp
 ---
 ## Data
 All data associated with this manuscript are publicly available and can be found in the [Mother of all BCI Benchmarks (MOABB)](http://moabb.neurotechx.com/docs/index.html) here:
-[http://moabb.neurotechx.com/docs/datasets.html](http://moabb.neurotechx.com/docs/datasets.html)
+[http://moabb.neurotechx.com/docs/datasets.html](http://moabb.neurotechx.com/docs/datasets.html) and/or in [MNE-Python](https://mne.tools/stable/index.html)
 
 
 
