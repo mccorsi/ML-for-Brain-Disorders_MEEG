@@ -34,7 +34,7 @@ To install all the packages used in this work you can directly type in your term
 The code proposed here relies on several open-source Python packages:
 
 * [MNE-Python](https://mne.tools/stable/index.html) & [[Gramfort et al, 2014]](https://pubmed.ncbi.nlm.nih.gov/24161808/)
-* [MOABB](http://moabb.neurotechx.com/docs/index.html) & [Jayaram et al, 2018](https://iopscience.iop.org/article/10.1088/1741-2552/aadea0)
-* [scikit-learn](https://scikit-learn.org/stable/) & & [Pedregosa et al, 2011](https://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html) & [Buitinck et al, 2013](https://hal.inria.fr/hal-00856511)
+* [MOABB](http://moabb.neurotechx.com/docs/index.html) & [[Jayaram et al, 2018]](https://iopscience.iop.org/article/10.1088/1741-2552/aadea0)
+* [scikit-learn](https://scikit-learn.org/stable/) & [[Pedregosa et al, 2011]](https://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html) & [[Buitinck et al, 2013]](https://hal.inria.fr/hal-00856511)
 * [Matplotlib](https://matplotlib.org/stable/index.html)
 * [Seaborn](https://seaborn.pydata.org) 
