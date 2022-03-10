@@ -2,7 +2,7 @@
 ---
 This repository contains the code and supporting documents associated with the following manuscript:
 
-TODO: https://hal.inria.fr/hal-03604421
+https://hal.inria.fr/hal-03604421
 
 Please cite as:
 
