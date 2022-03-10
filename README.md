@@ -2,11 +2,11 @@
 ---
 This repository contains the code and supporting documents associated with the following manuscript:
 
-TODO: put arxiv-link
+TODO: https://hal.inria.fr/hal-03604421
 
 Please cite as:
 
-Corsi, M.-C. (2022). Magnetoencephalography and Electroencephalography (Chapter). ArXiv. LINK
+Corsi, M.-C. (2022). Electroencephalography and Magnetoencephalography. In: "Machine learning for brain diseases" edited by O. Colliot. In Press. Available in [HAL](https://hal.inria.fr/hal-03604421)
 
 
 ---
@@ -16,7 +16,7 @@ Corsi, M.-C. (2022). Magnetoencephalography and Electroencephalography (Chapter)
 
 ---
 ## Abstract
-In this chapter, we present the main characteristics of the magnetoencephalography (MEG) and of the electroencephalography (EEG). More specifically, this chapter is dedicated to the presentation of the data, the way they can be acquired and analyzed. Then, we present the main features that can be extracted and their applications for brain disorders with concrete examples to illustrate them.
+In this chapter, we present the main characteristics of electroencephalography (EEG) and magnetoencephalography (MEG). More specifically, this chapter is dedicated to the presentation of the data, the way they can be acquired and analyzed. Then, we present the main features that can be extracted and their applications for brain disorders with concrete examples to illustrate them. Additional materials associated with this chapter are available in the dedicated Github repository.
 
 ---
 ## Data
